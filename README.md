@@ -6,7 +6,7 @@
 ### 示例  
 `./twitcastinfo.sh "c:annuuuu_cas" > twitcastinfo_c:annuuuu_cas.txt`
 ### 输出格式示例
-是否有录播	直播链接	直播标题	直播时间
+是否有录播，直播链接，直播时间，直播标题
 ```
 NO_REC	/c:annuuuu_cas/movie/535219011	2019/03/30 17:07:35	Radio 初見さん捕まえる #535219011
 NO_REC	/c:annuuuu_cas/movie/535194932	2019/03/30 14:37:23	Radio 初見さん捕まえる #535194932
