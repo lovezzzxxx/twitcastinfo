@@ -8,13 +8,13 @@
 ### 输出格式示例
 是否有录播，直播链接，直播时间，直播标题
 ```
-NO_REC	/c:annuuuu_cas/movie/535219011	2019/03/30 17:07:35	Radio 初見さん捕まえる #535219011
-NO_REC	/c:annuuuu_cas/movie/535194932	2019/03/30 14:37:23	Radio 初見さん捕まえる #535194932
-RECORD	/c:annuuuu_cas/movie/535080025	2019/03/29 23:31:43	Radio 寝落ち、雑談〇 #535080025
-NO_REC	/c:annuuuu_cas/movie/534996481	2019/03/29 17:48:05	Radio 初見さん捕まえる！ #534996481
-NO_REC	/c:annuuuu_cas/movie/534907869	2019/03/29 03:11:17	Radio #534907869
-NO_REC	/c:annuuuu_cas/movie/534905830	2019/03/29 02:55:29	Radio 添い寝 #534905830
-NO_REC	/c:annuuuu_cas/movie/534868523	2019/03/29 00:09:20	Live 寝落ち、雑談○ #534868523
-NO_REC	/c:annuuuu_cas/movie/534852136	2019/03/28 23:19:16	Live 寝落ち、雑談○ #534852136
-NO_REC	/c:annuuuu_cas/movie/534827765	2019/03/28 22:05:38	Live 初見さん捕まえる！ #534827765
+/c:annuuuu_cas/movie/557767840(2019/07/25 22:00:45)	RECORD(2:11:49)	Radio 寝落ち◎初見さん◎ #557767840
+/c:annuuuu_cas/movie/557710632(2019/07/25 16:00:08)	RECORD(1:32:27)	クリア【ベリーリトルナイトメア】
+/c:annuuuu_cas/movie/557235222(2019/07/22 22:31:40)	RECORD(1:38:31)	Radio 寝落ち◎初見さん◎ #557235222
+/c:annuuuu_cas/movie/557130809(2019/07/22 07:50:27)	RECORD(1:07:21)	Radio 支度しながら/BGM◎ #557130809
+/c:annuuuu_cas/movie/557046765(2019/07/21 22:04:06)	RECORD(1:50:11)	Radio 寝落ち◎初見さん◎ #557046765
+/c:annuuuu_cas/movie/557045762(2019/07/21 22:01:16)	RECORD(02:42)	Radio 初見さん◎雑談◎ #557045762
+/c:annuuuu_cas/movie/556957734(2019/07/21 12:47:34)	RECORD(30:07)	Radio 寝起きボイス✧作業用BGM◎ #556957734
+/c:annuuuu_cas/movie/556952041(2019/07/21 11:47:25)	RECORD(1:00:01)	Radio 寝起きボイス✧作業用BGM◎ #556952041
+/c:annuuuu_cas/movie/556791501(2019/07/20 17:17:54)	RECORD(2:00:03)	Radio 初見さん◎BGM◎ #556791501
 ```
