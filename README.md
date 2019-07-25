@@ -48,6 +48,6 @@
 
 ### 组合用法
 将历史直播信息保存到twitcastinfo_记录名字.txt，将相应的历史评论信息保存到记录名字文件夹中的相应txt文件中
-`twitcastinfo.sh "频道号码" > twitcastinfo_记录名字.txt ; mkdir 记录名字 ; for link in $(awk -F"[\t(]" '{print $1}' twitcastinfo_记录名字.log); do bash twitcastcomment.sh ${link} > 记录名字/twitcastcomment$(echo ${link} | sed 's/\//_/g').txt; done`
+`./twitcastinfo.sh "频道号码" > twitcastinfo_记录名字.txt ; mkdir 记录名字 ; for link in $(awk -F"[\t(]" '{print $1}' twitcastinfo_记录名字.log); do bash ./twitcastcomment.sh ${link} > 记录名字/twitcastcomment$(echo ${link} | sed 's/\//_/g').txt; done`
 ### 示例
-`twitcastinfo.sh "c:annuuuu_cas" > twitcastinfo_c：annuuuu_cas.txt ; mkdir c：annuuuu_cas ; for link in $(awk -F"[\t(]" '{print $1}' twitcastinfo_c：annuuuu_cas.log); do bash twitcastcomment.sh ${link} > c：annuuuu_cas/twitcastcomment$(echo ${link} | sed 's/\//_/g').txt; done`
+`./twitcastinfo.sh "c:annuuuu_cas" > twitcastinfo_c：annuuuu_cas.txt ; mkdir c：annuuuu_cas ; for link in $(awk -F"[\t(]" '{print $1}' twitcastinfo_c：annuuuu_cas.log); do bash ./twitcastcomment.sh ${link} > c：annuuuu_cas/twitcastcomment$(echo ${link} | sed 's/\//_/g').txt; done`
