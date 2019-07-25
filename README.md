@@ -19,8 +19,6 @@
 /c:annuuuu_cas/movie/556791501(2019/07/20 17:17:54)	RECORD(2:00:03)	Radio 初見さん◎BGM◎ #556791501
 ```
 
-
-
 # twitcastcomment
 获取twitcasting直播的历史评论信息（评论链接，评论时间，评论者名称，评论者链接，评论内容）
 
@@ -48,9 +46,8 @@
 /c:annuuuu_cas/comment/557767840-16488164224(Fri, 26 Jul 2019 00:10:18 +0900)	Y(@yuu______ta)	僕の楽しみは君なんよああ<img class="emoji" src="/img/e/k/32E.gif" width="14" height="15" />
 ```
 
-
-
-### 组合用法
+# 组合用法
+### 方法
 将历史直播信息保存到twitcastinfo_记录名字.txt，将相应的历史评论信息保存到记录名字文件夹中的相应txt文件中
 `./twitcastinfo.sh "频道号码" > twitcastinfo_记录名字.txt ; mkdir 记录名字 ; for link in $(awk -F"[\t(]" '{print $1}' twitcastinfo_记录名字.log); do bash ./twitcastcomment.sh ${link} > 记录名字/twitcastcomment$(echo ${link} | sed 's/\//_/g').txt; done`
 ### 示例
