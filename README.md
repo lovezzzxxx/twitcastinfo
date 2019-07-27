@@ -1,12 +1,12 @@
 # twitcastinfo
-获取twitcasting频道的历史直播信息（直播链接，直播时间，是否有录播，直播时长，直播标题）
+获取twitcasting频道的历史直播信息（直播链接，直播时间，是否有录播，直播时长，直播标题，直播简介）
 
 ### 方法  
 `./twitcastinfo.sh "频道号码"`  
 ### 示例  
 `./twitcastinfo.sh "c:annuuuu_cas" > twitcastinfo_c：annuuuu_cas.txt`
 ### 输出格式示例
-直播链接(直播时间)	是否有录播(直播时长)	直播标题
+直播链接(直播时间)	是否有录播(直播时长)	直播标题(直播简介)
 ```
 /c:annuuuu_cas/movie/557767840(2019/07/25 22:00:45)	RECORD(2:11:49)	Radio 寝落ち◎初見さん◎ #557767840
 /c:annuuuu_cas/movie/557710632(2019/07/25 16:00:08)	RECORD(1:32:27)	クリア【ベリーリトルナイトメア】
