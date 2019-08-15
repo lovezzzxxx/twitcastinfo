@@ -1,4 +1,12 @@
 #!/bin/bash
+
+if [[ ! -n "${1}" ]]; then
+	echo "${0} 频道编号"
+	exit 1
+fi
+
+
+
 PART_URL="${1}"
 
 ./twitcastinfo.sh "${PART_URL}" > "./twitcastinfo_${PART_URL/:/：}.log" ; 
