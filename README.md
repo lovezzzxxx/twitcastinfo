@@ -49,6 +49,6 @@
 # twitcast   
 将历史直播信息保存到twitcastinfo_频道名称.log，将相应的历史评论信息保存到以频道名称命名的文件夹中的相应.log文件中  
 ### 方法  
-`./twitcast.sh "频道号码"`  
+`./twitcast.sh "频道号码" "获取此时间之后的评论"`  
 ### 示例  
-`./twitcast.sh "c:annuuuu_cas"`  
+`./twitcast.sh "c:annuuuu_cas" "2019/07/25 22:00:45"`  
