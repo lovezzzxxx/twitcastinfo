@@ -2,6 +2,8 @@
 
 if [[ ! -n "${1}" ]]; then
 	echo "${0} 频道编号"
+	echo "${0} \"kaguramea_vov/movie/593632557\""
+	echo "${0} \"https://twitcasting.tv/kaguramea_vov/movie/593632557\""
 	exit 1
 fi
 
@@ -12,7 +14,8 @@ TOTAL_PAGE=$(curl -s "https://twitcasting.tv/${PART_URL}" | grep -o "${PART_URL}
 
 PAGE=0
 while [[ ! ${PAGE} -gt ${TOTAL_PAGE} ]]; do	
-	COM=$(curl -s "https://twitcasting.tv/${PART_URL}-${PAGE}" | awk 'BEGIN{RS="<td class=\"comment\">";FS="\n";ORS="\n";OFS="\t"} $1 ~ /<span class=\"user\">/ {USER_NAME_POS=match($1,"[^<>]*</a><span class=\"name\">");USER_NAME=substr($1,USER_NAME_POS,RLENGTH-23); USER_LINK_POS=match($1,"</a><span class=\"name\">[^<>]*");USER_LINK=substr($1,USER_LINK_POS+23,RLENGTH-23) ; COM_LINK_POS=match($1,"</span><br><p><a href=\"[^\"]*\">");COM_LINK=substr($1,COM_LINK_POS+23,RLENGTH-25) ; COM_START_POS=COM_LINK_POS+RLENGTH ; COM_END_POS=match($1,"</a></p><br>");COM=substr($1,COM_START_POS,COM_END_POS-COM_START_POS) ; COM_DATE_POS=match($2,"Date.parse[(]\"[^\"]*");COM_DATE=substr($2,COM_DATE_POS+12,RLENGTH-12) ; print COM_LINK "(" COM_DATE ")",USER_NAME USER_LINK,COM}')
+	PAGE_GET=$(curl -s "https://twitcasting.tv/${PART_URL}-${PAGE}")
+	COM=$(echo $PAGE_GET | awk 'BEGIN{RS="<div class=\"tw-comment-history-item\" data-comment-id=\"";FS="\n";ORS="\n";OFS="\t"} $1 !~ /<!DOCTYPE HTML/ {COM_LINK_POS=match($1,"<a class=\"tw-comment-history-item__content__text\" href=\"[^\"]*\""); COM_LINK=substr($1,COM_LINK_POS+56,RLENGTH-57); COM_LINK_END_POS=COM_LINK_POS+RLENGTH+2; COM_DATE_POS=match($1,"datetime=\"[^\"]*\""); COM_DATE=substr($1,COM_DATE_POS+10,RLENGTH-11); USER_LINK_POS=match($1,"<a class=\"tw-comment-history-item__details__user-link\" href=\"[^\"]*\">"); USER_LINK=substr($1,USER_LINK_POS+61,RLENGTH-63); USER_LINK_END_POS=USER_LINK_POS+RLENGTH+1; USER_NAME_POS=match($1,"</a> </div> </div> </div> <time class=\"tw-comment-history-item__info__date\""); USER_NAME=substr($1,USER_LINK_END_POS,USER_NAME_POS-USER_LINK_END_POS-1); COM_END_POS=match($1,"</a> </div> <div class=\"tw-comment-history-item__info\">"); COM=substr($1,COM_LINK_END_POS,COM_END_POS-COM_LINK_END_POS-1); print COM_LINK "(" COM_DATE ")",USER_NAME "(" USER_LINK ")",COM}')
 	[[ -n "${COM}" ]] || break
 	echo "${COM}"
 	PAGE=$(( ${PAGE} + 1 ))
