@@ -2,12 +2,15 @@
 
 if [[ ! -n "${1}" ]]; then
 	echo "${0} 频道编号"
+	echo "${0} \"kaguramea_vov\""
+	echo "${0} \"https://twitcasting.tv/kaguramea_vov\""
+	exit 1
 	exit 1
 fi
 
 
 
-PART_URL="${1}"
+PART_URL=$(echo ${1} | sed 's/https:\/\/twitcasting.tv\///g')
 
 PAGE=0
 PAGE_LINK="show/0"
