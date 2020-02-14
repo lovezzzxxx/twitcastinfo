@@ -1,23 +1,39 @@
 #!/bin/bash
 
 if [[ ! -n "${1}" ]]; then
-	echo "${0} 频道编号 获取此时间之后的评论"
+	echo "${0} 频道编号"
+	echo "${0} \"kaguramea_vov\""
+	echo "${0} \"https://twitcasting.tv/kaguramea_vov\""
+	exit 1
 	exit 1
 fi
 
 
 
-PART_URL="${1}"
-DATE_AFTER="${2}" ; [[ "${DATE_AFTER}" == "" ]] || DATE_AFTER_TIMESTAMP=$(date -d "${DATE_AFTER}" +%s)
+PART_URL=$(echo ${1} | sed 's/https:\/\/twitcasting.tv\///g')
 
-
-
-./twitcastinfo.sh "${PART_URL}" > "./twitcastinfo_${PART_URL/:/：}.log" ; 
-mkdir "twitcastcomment_${PART_URL/:/：}"
-awk -F"\t" '{print $1}' "./twitcastinfo_${PART_URL/:/：}.log" | while read LINE; do
-	LINK=$(echo ${LINE} | awk -F"[()]" '{print $1}') ; NAME=$(echo ${LINK} | sed 's/\//_/g' | sed 's/:/：/g')
-	DATE=$(echo ${LINE} | awk -F"[()]" '{print $2}') ; DATE_TIMESTAMP=$(date -d "${DATE}" +%s)
-	if [[ "${DATE_AFTER}" == "" ]] || [[ "${DATE_TIMESTAMP}" -gt "${DATE_AFTER_TIMESTAMP}" ]]; then
-		./twitcastcomment.sh "${LINK}" > "./twitcastcomment_${PART_URL/:/：}/twitcastcomment${NAME}.log"
-	fi
+PAGE=0
+PAGE_LINK="show/0"
+while true; do
+	INFO_NOTIME=$(curl -s "https://twitcasting.tv/${PART_URL}/${PAGE_LINK}" | awk 'BEGIN{RS="<a class=\"tw-movie-thumbnail\"|<div class=\"paging\"";FS="\n";ORS="\n";OFS="\t"} $1 ~ /href/ {split($1,LINK,"\"") ; TIME_POS=match($0,"<span class=\"tw-movie-thumbnail-duration\">[^<]*");TIME=substr($0,TIME_POS+42,RLENGTH-42) ; TITLE_POS=match($0,"<span class=\"tw-movie-thumbnail-title\">[^<]*</span>|<span class=\"tw-movie-thumbnail-title\">[^<]*<img class=\"tw-movie-thumbnail-title-icon\" src=\"/img/locked.png\">[^<]*</span>");TITLE=substr($0,TITLE_POS,RLENGTH);gsub("^<span class=\"tw-movie-thumbnail-title\">\n *|<span class=\"tw-movie-thumbnail-title\">\n *<img class=\"tw-movie-thumbnail-title-icon\" src=\"/img/locked.png\">\n *| *</span>$","",TITLE) ; LABEL_POS=match($0,"<span class=\"tw-movie-thumbnail-label\">[^<]*");LABEL=substr($0,LABEL_POS+39,RLENGTH-39) ; DATE_POS=match($0,"[0-9]*/[0-9]*/[0-9]* [0-9]*:[0-9]*:[0-9]*");DATE=substr($0,DATE_POS,19) ; DATE_POS=match($0,"[0-9]*/[0-9]*/[0-9]* [0-9]*:[0-9]*:[0-9]*");DATE=substr($0,DATE_POS,19) ; VIEW_POS=match($0,"<span class=\"tw-movie-thumbnail-view\">[^<]*");VIEW=substr($0,VIEW_POS+38,RLENGTH-38);sub(",","",VIEW) ; COM_POS=match($0,"<span class=\"tw-movie-thumbnail-comment\">[^<]*");COM=substr($0,COM_POS+41,RLENGTH-41);sub(",","",COM) ; if (match($0,"img class=\"tw-movie-thumbnail-title-icon\"")) print LINK[2]"("DATE")","LOCKED("TIME")",TITLE"("LABEL")",VIEW"("COM")";else if (match($0,"data-status=\"recorded\"")) print LINK[2]"("DATE")","RECORD("TIME")",TITLE"("LABEL")",VIEW"("COM")";else print LINK[2]"("DATE")","NO_REC("TIME")",TITLE"("LABEL")",VIEW"("COM")"}')
+	
+	LINE=0
+	while true; do
+		LINE=$(( ${LINE} + 1 ))
+		INFO=$(echo "${INFO_NOTIME}" | sed -n "${LINE}p")
+		[[ ! -n "${INFO}" ]] && break
+		
+		if [[ $(echo "${INFO}" | awk -F"\t" '{print $2}') == "NO_REC()" ]]; then
+			LINK="https://twitcasting.tv/$(echo "${INFO}" | awk -F"[(\t]" '{print $1}')"
+			TIME=$(curl -s ${LINK} | awk '{TIME_POS=match($0,"<span class=\"tw-player-meta__status_item\">Duration:[^<]*</span>");TIME=substr($0,TIME_POS+52,RLENGTH-60) ; if(TIME!="") print TIME}')
+			echo "${INFO}" | sed "s/\tNO_REC()\t/\tNO_REC(${TIME})\t/g"
+		else
+			echo "${INFO}"
+		fi
+	done
+		
+	PAGE=$(( ${PAGE} + 1 ))
+	PAGE_LINK=$(curl -s "https://twitcasting.tv/${PART_URL}/${PAGE_LINK}" | grep -o "show/${PAGE}-[0-9]*")
+	
+	[[ -n "${PAGE_LINK}" ]] || break
 done
