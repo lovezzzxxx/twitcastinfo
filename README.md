@@ -4,8 +4,8 @@
 ### 方法  
 `./twitcastinfo.sh "频道号码"`  
 ### 示例  
-`./twitcastinfo.sh "c:annuuuu_cas"`
-`./twitcastinfo.sh "https://twitcasting.tv/c:annuuuu_cas" > twitcastinfo_c：annuuuu_cas.txt`
+`./twitcastinfo.sh "c:annuuuu_cas"`  
+`./twitcastinfo.sh "https://twitcasting.tv/c:annuuuu_cas" > twitcastinfo_c：annuuuu_cas.txt`  
 ### 输出格式示例
 直播链接(直播时间)	是否有录播或需要密码(直播时长)	直播标题(直播简介)
 ```
@@ -26,8 +26,8 @@
 ### 方法  
 `./twitcastcomment.sh "直播链接"`  
 ### 示例  
-`./twitcastcomment.sh "c:annuuuu_cas/movie/557767840"`
-`./twitcastcomment.sh "https://twitcasting.tv/c:annuuuu_cas/movie/557767840" > twitcastcomment_c：annuuuu_cas_movie_557767840.txt`
+`./twitcastcomment.sh "c:annuuuu_cas/movie/557767840"`  
+`./twitcastcomment.sh "https://twitcasting.tv/c:annuuuu_cas/movie/557767840" > twitcastcomment_c：annuuuu_cas_movie_557767840.txt`  
 ### 输出格式示例
 评论链接(评论时间)	评论者名称(评论者链接)	评论内容
 ```
@@ -53,5 +53,5 @@
 ### 方法  
 `./twitcast.sh "频道号码" "获取此时间之后的评论"`  
 ### 示例  
-`./twitcast.sh "c:annuuuu_cas" "2019/07/25 22:00:45"` 
-`./twitcast.sh "https://twitcasting.tv/c:annuuuu_cas" "2019/07/25 22:00:45"`
+`./twitcast.sh "c:annuuuu_cas" "2019/07/25 22:00:45"`   
+`./twitcast.sh "https://twitcasting.tv/c:annuuuu_cas" "2019/07/25 22:00:45"`  
