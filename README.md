@@ -1,4 +1,13 @@
-# twitcastinfo
+# twitcast   
+将历史直播信息保存到twitcastuser_频道名称.log，将相应的历史评论信息保存到以频道名称命名的文件夹中的相应.log文件中  
+### 方法  
+`./twitcast.sh "频道号码" "获取此时间之后的评论"`  
+### 示例  
+`./twitcast.sh "c:annuuuu_cas" "2019/07/25 22:00:45"`   
+`./twitcast.sh "https://twitcasting.tv/c:annuuuu_cas" "2019/07/25 22:00:45"`  
+
+
+# twitcastuser
 获取twitcasting频道的历史直播信息（直播链接，直播时间，是否有录播，直播时长，直播标题，直播简介）
 
 ### 方法  
@@ -47,11 +56,3 @@
 /c:annuuuu_cas/comment/557767840-16488167926(Fri, 26 Jul 2019 00:10:40 +0900)	🐟 ししゃも♂🐟(@HJdLjQagribJXxD)	わこ
 /c:annuuuu_cas/comment/557767840-16488164224(Fri, 26 Jul 2019 00:10:18 +0900)	Y(@yuu______ta)	僕の楽しみは君なんよああ<img class="emoji" src="/img/e/k/32E.gif" width="14" height="15" />
 ```
-
-# twitcast   
-将历史直播信息保存到twitcastinfo_频道名称.log，将相应的历史评论信息保存到以频道名称命名的文件夹中的相应.log文件中  
-### 方法  
-`./twitcast.sh "频道号码" "获取此时间之后的评论"`  
-### 示例  
-`./twitcast.sh "c:annuuuu_cas" "2019/07/25 22:00:45"`   
-`./twitcast.sh "https://twitcasting.tv/c:annuuuu_cas" "2019/07/25 22:00:45"`  
