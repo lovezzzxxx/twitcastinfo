@@ -5,7 +5,6 @@ if [[ ! -n "${1}" ]]; then
 	echo "${0} \"kaguramea_vov\""
 	echo "${0} \"https://twitcasting.tv/kaguramea_vov\""
 	exit 1
-	exit 1
 fi
 
 
@@ -33,7 +32,7 @@ while true; do
 	done
 		
 	PAGE=$(( ${PAGE} + 1 ))
-	PAGE_LINK=$(curl -s "https://twitcasting.tv/${PART_URL}/${PAGE_LINK}" | grep -o "show/${PAGE}-[0-9]*")
+	PAGE_LINK=$(curl -s "https://twitcasting.tv/${PART_URL}/${PAGE_LINK}" | grep -o "show/${PAGE}-[0-9]*" | head -n 1)
 	
 	[[ -n "${PAGE_LINK}" ]] || break
 done
